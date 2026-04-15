@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 var Velocidad: int = 100
-var Gravedad = ProjectSettings.get_setting("Physics/2d/Default_gravity")
+
+var Gravedad = ProjectSettings.get_setting("physics/2d/default_gravity")
 #gravedad para los saltos
 
 func _ready() -> void:
@@ -15,7 +16,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("Saltar") and is_on_floor():
-		velocity.y = -Velocidad
+		velocity.y = -Velocidad * 5
+		
 	velocity.y += Gravedad * delta
+	
 	
 	pass
