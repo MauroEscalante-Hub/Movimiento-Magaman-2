@@ -4,6 +4,7 @@ var Velocidad: int = 100
 var Dasheando: bool = false
 var Dash: int = 500
 var Puede_dashear: bool = true
+#Quien diria que se necesitaban tantas variables para poder dashear
 var Gravedad = ProjectSettings.get_setting("physics/2d/default_gravity")
 #gravedad para los saltos
 
@@ -23,10 +24,13 @@ func _physics_process(delta: float) -> void:
 		$CooldownDash.start()
 		$CooldownDashReal.start()
 	move_and_slide()
-	
+ 	
 	if Input.is_action_just_pressed("Saltar") and is_on_floor():
 		velocity.y = -Velocidad * 5
 		
+	#Esto lo tire solamente por probar, no pense que fuera funcionar
+	if Input.is_action_just_pressed("Saltar") and is_on_wall():
+		velocity.y = -Velocidad * 5
 	velocity.y += Gravedad * delta
 	
 	pass
