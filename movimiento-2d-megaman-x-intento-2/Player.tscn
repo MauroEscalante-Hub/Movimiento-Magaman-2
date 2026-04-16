@@ -31,3 +31,11 @@ animation = &"Player"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=334103278]
 position = Vector2(-1.0067124, -8.053692)
 shape = SubResource("RectangleShape2D_kpjcp")
+
+[node name="CooldownDash" type="Timer" parent="." unique_id=630284666]
+wait_time = 0.5
+
+[node name="CooldownDashReal" type="Timer" parent="." unique_id=1254809787]
+
+[connection signal="timeout" from="CooldownDash" to="." method="_on_cooldown_dash_timeout"]
+[connection signal="timeout" from="CooldownDashReal" to="." method="_on_cooldown_dash_real_timeout"]
